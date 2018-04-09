@@ -1,12 +1,14 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+const port = process.env.PORT || 3000;
 
 var app = express();
 
 // Set view engine
 app.set('view engine','hbs');
 hbs.registerPartials(__dirname+'/views/partials');
+
 hbs.registerHelper('getCurrentYear',()=>{
     return new Date().getFullYear();
 });
@@ -54,6 +56,6 @@ app.get('/bad',(req,res)=>{
 
 
 // Listen for incoming request
-app.listen(3000,()=>{
-  console.log('Server running at localhost:3000');
+app.listen(port,()=>{
+  console.log(`Server running at port ${port}`);
 });
